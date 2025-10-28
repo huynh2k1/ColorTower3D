@@ -15,7 +15,7 @@ public class BlockSpawner : MonoBehaviour
     int _indexSpawn = 0;
     const float _blockSize = 2f;
 
-    Block _currentBlock;
+    int idBlock = 0;
 
     private void Awake()
     {
@@ -35,6 +35,8 @@ public class BlockSpawner : MonoBehaviour
     public void Initialize()
     {
         _indexSpawn = 0;
+        idBlock = 0;
+        _groundCheck.Initialize();
         CameraCtrl.I.Initialize();
         ClearBlocksImmediate();
         SpawnNextBlock();
@@ -42,14 +44,18 @@ public class BlockSpawner : MonoBehaviour
 
     public void SpawnNextBlock()
     {
-        float posY = (_indexSpawn * _blockSize) + (_blockSize * 5f);
-        Vector3 pos = new Vector3(0, posY, 0);
+        float posY = (_indexSpawn * _blockSize) + (_blockSize * 4f);
+        float start = UnityEngine.Random.value > 0.5f ? -2 : 2;
+        Vector3 pos = new Vector3(start, posY, 0);
 
         Block block = Instantiate(_blockPrefab, pos, Quaternion.identity);
-        block.OnBlockGrounded = OnBlockLanded;
+        block.patrolSpeed = 1 + (idBlock / 10);
+        block.ID = idBlock;
+        block.OnBlockPlaced = OnBlockLanded;
         block.Initialize();
         _listBlocks.Add(block);
         _indexSpawn++;
+        idBlock++;
     }
 
     public void OnBlockLanded()
@@ -57,6 +63,8 @@ public class BlockSpawner : MonoBehaviour
         ScoreCtrl.I.AddScore(1);
         if(_indexSpawn >= 10)
         {
+            SoundManager.I.PlaySoundByType(TypeSound.MERGE10);
+
             _indexSpawn = 0;
             ClearBlocks();
             CameraCtrl.I.MoveCamera(_indexSpawn, _blockSize, SpawnNextBlock);
@@ -71,6 +79,8 @@ public class BlockSpawner : MonoBehaviour
         {
             block.Destroy();
         }
+        _listBlocks.Clear();
+
     }
 
     public void ClearBlocks()

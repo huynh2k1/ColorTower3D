@@ -28,12 +28,21 @@ public class GameCtrl : BaseGameCtrl
         UIGame.OnClickReplayButton += GameReplay;
 
         //UILose
-        
+        UILose.OnClickReplayButton += GameReplay;
+        UILose.OnClickHomeButton += GameHome;
     }
 
     private void OnDestroy()
     {
-        UIHome.OnClickPlayButton -= GameStart;  
+        UIHome.OnClickPlayButton -= GameStart;
+        //UIGame
+        UIGame.OnClickHomeButton -= GameHome;
+        UIGame.OnClickReplayButton -= GameReplay;
+
+        //UILose
+        UILose.OnClickReplayButton -= GameReplay;
+        UILose.OnClickHomeButton -= GameHome;
+
     }
 
     public void ChangeState(GameState newState)
@@ -66,6 +75,7 @@ public class GameCtrl : BaseGameCtrl
 
     public override void GameLose()
     {
+        ChangeState(GameState.None);
         uiCtrl.Show(UIType.Lose);
     }
 }
