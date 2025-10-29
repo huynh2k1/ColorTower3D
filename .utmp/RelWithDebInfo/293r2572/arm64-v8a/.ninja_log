@@ -1,12 +1,12 @@
 # ninja log v5
-224	2445	7833722577048404	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	79ba694bee093ffa
-2447	4948	7833722596850541	E:/Unity/3D/ColorBlock3D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/293r2572/obj/arm64-v8a/libswappywrapper.so	be0a7cbd2420f0d1
-86	5858	7833722609641601	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	e7e543a321187a2d
-31	5985	7833722611315775	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	f77aa36d825ca3e6
-206	6110	7833722613221044	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	5533ce80827ef32a
-137	6826	7833722618807909	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	34ccbb98f36c6783
-47	6828	7833722621147794	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c478ffaa071914ae
-1	6945	7833722622186025	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	1503c9c1ca70dc38
-98	7668	7833722629372088	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	11fc4b7176266ef0
-18	7708	7833722629683592	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	3dc49cdd67ce9ed3
-7708	8296	7833722635973752	E:/Unity/3D/ColorBlock3D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/293r2572/obj/arm64-v8a/libgame.so	f2d7ce56c8acc999
+322	1584	7834553415539744	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	79ba694bee093ffa
+1586	2938	7834553430373978	E:/Unity/3D/ColorBlock3D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/293r2572/obj/arm64-v8a/libswappywrapper.so	be0a7cbd2420f0d1
+37	4000	7834553440615429	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	e7e543a321187a2d
+2	4004	7834553440620650	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	f77aa36d825ca3e6
+168	4005	7834553440635808	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	34ccbb98f36c6783
+48	4013	7834553440620650	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	c478ffaa071914ae
+25	4039	7834553441234435	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	1503c9c1ca70dc38
+111	4041	7834553440620650	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	5533ce80827ef32a
+65	4291	7834553444076134	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	11fc4b7176266ef0
+14	4451	7834553445661473	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	3dc49cdd67ce9ed3
+4452	4742	7834553448732383	E:/Unity/3D/ColorBlock3D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/293r2572/obj/arm64-v8a/libgame.so	f2d7ce56c8acc999

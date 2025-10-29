@@ -93,7 +93,6 @@ public class Block : MonoBehaviour
             }
             _effect.Play();
             hasLanded = true;
-            //Physics.gravity = new Vector3(0, -9.81f, 0);
             rb.linearVelocity = Vector3.zero;
             rb.AddForce(Vector3.down * 10f);
 

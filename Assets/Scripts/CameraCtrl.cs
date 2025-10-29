@@ -15,7 +15,8 @@ public class CameraCtrl : MonoBehaviour
 
     public void Initialize()
     {
-        transform.position = initPos;   
+        transform.position = initPos;
+        transform.DOKill();
     }
 
     public void MoveToInit(Action actionDone = default)

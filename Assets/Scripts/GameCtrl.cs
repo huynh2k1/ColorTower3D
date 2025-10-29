@@ -29,8 +29,8 @@ public class GameCtrl : GameManagerBase
         GamePanel.OnClickReplayButton += ReplayGame;
 
         //UILose
-        UILose.OnClickReplayButton += ReplayGame;
-        UILose.OnClickHomeButton += HomeScene;
+        PanelLose.OnClickReplayButton += ReplayGame;
+        PanelLose.OnClickHomeButton += HomeScene;
     }
 
     private void OnDestroy()
@@ -41,8 +41,8 @@ public class GameCtrl : GameManagerBase
         GamePanel.OnClickReplayButton -= ReplayGame;
 
         //UILose
-        UILose.OnClickReplayButton -= ReplayGame;
-        UILose.OnClickHomeButton -= HomeScene;
+        PanelLose.OnClickReplayButton -= ReplayGame;
+        PanelLose.OnClickHomeButton -= HomeScene;
 
     }
 
