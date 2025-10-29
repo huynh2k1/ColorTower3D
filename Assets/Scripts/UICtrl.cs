@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using H_Utils;
-public class UICtrl : BaseUICtrl
+using BaseH;
+public class UICtrl : BaseUIManager
 {
     public static UICtrl I;
     protected override void Awake()
@@ -13,16 +13,16 @@ public class UICtrl : BaseUICtrl
 
     private void OnEnable()
     {
-        UIHome.OnClickHowToPlayButton += ShowHowToPlay;
+        HomePanel.OnClickHowToPlayButton += ShowHowToPlay;
     }
 
     private void OnDisable()
     {
-        UIHome.OnClickHowToPlayButton -= ShowHowToPlay;
+        HomePanel.OnClickHowToPlayButton -= ShowHowToPlay;
     }
 
     public void ShowHowToPlay()
     {
-        Show(UIType.HowToPlay);
+        Active(PanelType.HowToPlay);
     }
 }

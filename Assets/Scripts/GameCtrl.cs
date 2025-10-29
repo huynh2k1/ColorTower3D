@@ -1,12 +1,12 @@
-using H_Utils;
+using BaseH;
 using UnityEngine;
 
-public class GameCtrl : BaseGameCtrl
+public class GameCtrl : GameManagerBase
 {
     public static GameCtrl I;
     public UICtrl uiCtrl;
 
-    public GameState CurState;
+    public GameStatus CurState;
 
     private void Awake()
     {
@@ -16,67 +16,67 @@ public class GameCtrl : BaseGameCtrl
 
     private void Start()
     {
-        GameHome();
+        HomeScene();
     }
 
     private void OnEnable()
     {
         //UIHome
-        UIHome.OnClickPlayButton += GameStart;
+        HomePanel.OnClickPlayButton += PlayGame;
 
         //UIGame
-        UIGame.OnClickHomeButton += GameHome;
-        UIGame.OnClickReplayButton += GameReplay;
+        GamePanel.OnClickHomeButton += HomeScene;
+        GamePanel.OnClickReplayButton += ReplayGame;
 
         //UILose
-        UILose.OnClickReplayButton += GameReplay;
-        UILose.OnClickHomeButton += GameHome;
+        UILose.OnClickReplayButton += ReplayGame;
+        UILose.OnClickHomeButton += HomeScene;
     }
 
     private void OnDestroy()
     {
-        UIHome.OnClickPlayButton -= GameStart;
+        HomePanel.OnClickPlayButton -= PlayGame;
         //UIGame
-        UIGame.OnClickHomeButton -= GameHome;
-        UIGame.OnClickReplayButton -= GameReplay;
+        GamePanel.OnClickHomeButton -= HomeScene;
+        GamePanel.OnClickReplayButton -= ReplayGame;
 
         //UILose
-        UILose.OnClickReplayButton -= GameReplay;
-        UILose.OnClickHomeButton -= GameHome;
+        UILose.OnClickReplayButton -= ReplayGame;
+        UILose.OnClickHomeButton -= HomeScene;
 
     }
 
-    public void ChangeState(GameState newState)
+    public void ChangeState(GameStatus newState)
     {
         CurState = newState;
     }
 
-    public override void GameHome()
+    public override void HomeScene()
     {
-        ChangeState(GameState.None);
-        uiCtrl.Show(UIType.Home);
-        uiCtrl.Hide(UIType.Game);
+        ChangeState(GameStatus.None);
+        uiCtrl.Active(PanelType.Home);
+        uiCtrl.DeActive(PanelType.Game);
     }
 
-    public override void GameStart()
+    public override void PlayGame()
     {
-        ChangeState(GameState.Playing);
-        uiCtrl.Hide(UIType.Home);
-        uiCtrl.Show(UIType.Game);
+        ChangeState(GameStatus.Playing);
+        uiCtrl.DeActive(PanelType.Home);
+        uiCtrl.Active(PanelType.Game);
         ScoreCtrl.I.Inititalize();
         BlockSpawner.I.Initialize();
     }
 
-    public override void GameReplay()
+    public override void ReplayGame()
     {
-        ChangeState(GameState.Playing);
+        ChangeState(GameStatus.Playing);
         BlockSpawner.I.Initialize();
         ScoreCtrl.I.Inititalize();
     }
 
-    public override void GameLose()
+    public override void Defeat()
     {
-        ChangeState(GameState.None);
-        uiCtrl.Show(UIType.Lose);
+        ChangeState(GameStatus.None);
+        uiCtrl.Active(PanelType.Lose);
     }
 }

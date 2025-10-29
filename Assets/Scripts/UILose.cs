@@ -1,10 +1,10 @@
 using UnityEngine;
-using H_Utils;
+using BaseH;
 using UnityEngine.UI;
 using System;
-public class UILose : BasePopup
+public class UILose : Panel
 {
-    public override UIType Type => UIType.Lose;
+    public override PanelType Type => PanelType.Lose;
 
     [SerializeField] Button _btnHome;
     [SerializeField] Button _btnReplay;
@@ -43,11 +43,11 @@ public class UILose : BasePopup
 
     void UpdateTextScore()
     {
-        _txtScore.text = $"Score: {PrefData.Score.ToString("00")}";
+        _txtScore.text = $"Score: {DataPlayerPref.Score.ToString("00")}";
     }
 
     void UpdateTextBestScore()
     {
-       _txtBestScore.text = $"Best Score: {PrefData.BestScore.ToString("00")}";
+       _txtBestScore.text = $"Best Score: {DataPlayerPref.BestScore.ToString("00")}";
     }
 }

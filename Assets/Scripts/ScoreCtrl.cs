@@ -15,23 +15,23 @@ public class ScoreCtrl : MonoBehaviour
     public void Inititalize()
     {
         _score = 0;
-        PrefData.Score = _score; 
+        DataPlayerPref.Score = _score; 
         UpdateTextScore();
     }
 
     public void AddScore(int value)
     {
         _score += value;
-        PrefData.Score = _score;
-        if(PrefData.Score > PrefData.BestScore)
+        DataPlayerPref.Score = _score;
+        if(DataPlayerPref.Score > DataPlayerPref.BestScore)
         {
-            PrefData.BestScore = PrefData.Score;
+            DataPlayerPref.BestScore = DataPlayerPref.Score;
         }
         UpdateTextScore();
     }   
 
     public void UpdateTextScore()
     {
-        _txtScore.text = PrefData.Score.ToString();
+        _txtScore.text = DataPlayerPref.Score.ToString();
     }
 }

@@ -62,7 +62,7 @@ public class BlockSpawner : MonoBehaviour
         ScoreCtrl.I.AddScore(1);
         if(_indexSpawn >= 10)
         {
-            SoundManager.I.PlaySoundByType(TypeSound.MERGE10);
+            SoundControl.I.PlaySoundByType(SoundType.MERGE10);
 
             _indexSpawn = 0;
             ClearBlocks();
@@ -113,7 +113,7 @@ public class BlockSpawner : MonoBehaviour
             block.SetKinematic();
         CameraCtrl.I.MoveToInit(() =>
         {
-            GameCtrl.I.GameLose();
+            GameCtrl.I.Defeat();
         });
     }
 }

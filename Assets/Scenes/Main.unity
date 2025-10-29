@@ -465,7 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 225459205}
   m_Layer: 0
-  m_Name: ===MANAGER===
+  m_Name: ===Controller===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -865,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7084146415193493294, guid: a5c70ae00c4869c44aa994a8dc1a1de6, type: 3}
       propertyPath: m_Name
-      value: UILose
+      value: PanelLose
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1393,7 +1393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 562288389}
   m_Layer: 0
-  m_Name: ===ENVIROMENT===
+  m_Name: ===Camera===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2107,7 +2107,7 @@ GameObject:
   - component: {fileID: 1018646541}
   - component: {fileID: 1018646542}
   m_Layer: 0
-  m_Name: UIGame
+  m_Name: GameScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2144,7 +2144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1018646540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8359f8dc6feb8cb4a85a7371dda9b5e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 98b278b4c0eaf994da5180cd41b69aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _btnTapArea: {fileID: 106954255}
@@ -2351,7 +2351,7 @@ GameObject:
   - component: {fileID: 1180443138}
   - component: {fileID: 1180443139}
   m_Layer: 0
-  m_Name: UIHome
+  m_Name: HomeScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2390,7 +2390,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1180443137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 398f20ebe29f7b645b01bead59630891, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f3e7e8781bc32a48a62923a702abee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _btnPlay: {fileID: 2099806193}
@@ -3382,7 +3382,7 @@ RectTransform:
   m_Father: {fileID: 1180443138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3684,7 +3684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2081466331}
-  - component: {fileID: 2081466332}
+  - component: {fileID: 2081466333}
   m_Layer: 0
   m_Name: SoundCtrl
   m_TagString: Untagged
@@ -3709,7 +3709,7 @@ Transform:
   - {fileID: 105468058}
   m_Father: {fileID: 225459205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2081466332
+--- !u!114 &2081466333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3718,7 +3718,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2081466330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe10e35a3746ad47a287605f7715efd, type: 3}
+  m_Script: {fileID: 11500000, guid: a2769369b3a17f34c9e83b8c3a4a4843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   music_source: {fileID: 108546633}

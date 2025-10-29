@@ -41,15 +41,15 @@ public class Block : MonoBehaviour
 
     private void OnEnable()
     {
-        UIGame.OnClickTapAreaButton += HandleTapBlock;
+        GamePanel.OnClickTapAreaButton += RaiseTapBlock;
     }
 
     private void OnDisable()
     {
-        UIGame.OnClickTapAreaButton -= HandleTapBlock;
+        GamePanel.OnClickTapAreaButton -= RaiseTapBlock;
     }
 
-    public void HandleTapBlock()
+    public void RaiseTapBlock()
     {
         if (hasStartedFall) return;
 
@@ -97,7 +97,7 @@ public class Block : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.AddForce(Vector3.down * 10f);
 
-            SoundManager.I.PlaySoundByType(TypeSound.BLOCKPLACED);
+            SoundControl.I.PlaySoundByType(SoundType.BLOCKPLACED);
             OnBlockPlaced?.Invoke();
         }
     }

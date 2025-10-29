@@ -1,11 +1,11 @@
-using H_Utils;
+using BaseH;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UILoading : BaseUI
+public class UILoading : PanelBase
 {
-    public override UIType Type => UIType.Loading;
+    public override PanelType Type => PanelType.Loading;
 
     [SerializeField] private H_FillBar loadingBar;
     [SerializeField] private float loadingTime = 3f;
@@ -38,6 +38,6 @@ public class UILoading : BaseUI
         loadingBar.UpdateText("Loading 100%");
         yield return new WaitForSeconds(0.2f);
         Hide();
-        UICtrl.I.Show(UIType.Home);
+        UICtrl.I.Active(PanelType.Home);
     }
 }
