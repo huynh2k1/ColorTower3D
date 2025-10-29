@@ -43,7 +43,7 @@ public class BlockSpawner : MonoBehaviour
 
     public void SpawnNextBlock()
     {
-        float posY = (_indexSpawn * _blockSize) + (_blockSize * 4f);
+        float posY = (_indexSpawn * _blockSize) + (_blockSize * 3f);
         float start = UnityEngine.Random.value > 0.5f ? -2 : 2;
         Vector3 pos = new Vector3(start, posY, 0);
 

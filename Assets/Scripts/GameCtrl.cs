@@ -10,6 +10,7 @@ public class GameCtrl : BaseGameCtrl
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;   
         I = this;
     }
 

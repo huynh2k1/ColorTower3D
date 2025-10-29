@@ -20,11 +20,9 @@ public class Block : MonoBehaviour
 
     [Header("Patrol")]
     public float patrolSpeed = 1f; //
-    [SerializeField] float patrolRange = 2f;
+    [SerializeField] float patrolRange = 4f;
     private bool isPatrolling = false;
 
-    private float leftX = -2f;
-    private float rightX = 2f;
     private float timer;
 
     public void Initialize()
@@ -35,7 +33,7 @@ public class Block : MonoBehaviour
 
         // Spawn ngẫu nhiên tại -2 hoặc 2
         isPatrolling = true;
-        timer = transform.position.x == -2 ? 0 : patrolRange; // Đảm bảo hướng đi đúng ngay từ đầu
+        timer = transform.position.x == -4 ? 0 : patrolRange; // Đảm bảo hướng đi đúng ngay từ đầu
 
         int index = UnityEngine.Random.Range(0, listModel.Length);
         listModel[index].SetActive(true);
@@ -67,7 +65,7 @@ public class Block : MonoBehaviour
         if (isPatrolling)
         {
             timer += Time.deltaTime * patrolSpeed;
-            float x = Mathf.Lerp(leftX, rightX, Mathf.PingPong(timer, 1f));
+            float x = Mathf.Lerp(-4f, 4f, Mathf.PingPong(timer, 1f));
             transform.position = new Vector3(x, transform.position.y, transform.position.z);
         }
     }
@@ -89,8 +87,7 @@ public class Block : MonoBehaviour
         if (collision.gameObject.CompareTag("Block"))
         {
             Block block = collision.gameObject.GetComponent<Block>();
-
-            if (block != null && ID != block.ID)
+            if (block != null && ID != block.ID + 1)
             {
                 return;
             }

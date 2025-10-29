@@ -30,7 +30,7 @@ public class CameraCtrl : MonoBehaviour
     public void MoveCamera(int indexSpawn, float blockSize, Action actionDone = default)
     {
         transform.DOKill();
-        float targetY = initPos.y + (indexSpawn * blockSize / 2);
+        float targetY = initPos.y + (indexSpawn * blockSize);
         transform.DOMoveY(targetY, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
         {
             actionDone?.Invoke();

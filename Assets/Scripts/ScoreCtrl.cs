@@ -5,7 +5,7 @@ public class ScoreCtrl : MonoBehaviour
 {
     public static ScoreCtrl I;
     [SerializeField] Text _txtScore;
-
+    int _score = 0;
 
     private void Awake()
     {
@@ -14,13 +14,15 @@ public class ScoreCtrl : MonoBehaviour
 
     public void Inititalize()
     {
-        PrefData.Score = 0; 
+        _score = 0;
+        PrefData.Score = _score; 
         UpdateTextScore();
     }
 
     public void AddScore(int value)
     {
-        PrefData.Score += value;
+        _score += value;
+        PrefData.Score = _score;
         if(PrefData.Score > PrefData.BestScore)
         {
             PrefData.BestScore = PrefData.Score;
@@ -30,6 +32,6 @@ public class ScoreCtrl : MonoBehaviour
 
     public void UpdateTextScore()
     {
-        _txtScore.text = PrefData.Score.ToString("00");
+        _txtScore.text = PrefData.Score.ToString();
     }
 }

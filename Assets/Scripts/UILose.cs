@@ -22,8 +22,9 @@ public class UILose : BasePopup
         _btnReplay?.onClick.AddListener(HandleReplayClicked);
     }
 
-    private void OnEnable()
+    public override void Show()
     {
+        base.Show();
         UpdateTextScore();
         UpdateTextBestScore();
     }
