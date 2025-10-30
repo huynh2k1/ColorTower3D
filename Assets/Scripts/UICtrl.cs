@@ -5,6 +5,7 @@ using BaseH;
 public class UICtrl : BaseUIManager
 {
     public static UICtrl I;
+    public UISelectMap uiSelectMap;
     protected override void Awake()
     {
         base.Awake();
@@ -24,5 +25,17 @@ public class UICtrl : BaseUIManager
     public void ShowHowToPlay()
     {
         Active(PanelType.HowToPlay);
+    }
+
+    public void ShowUISelectMap(bool isShow)
+    {
+        if (isShow)
+        {
+            uiSelectMap.Show();
+        }
+        else
+        {
+            uiSelectMap.Hide();
+        }
     }
 }

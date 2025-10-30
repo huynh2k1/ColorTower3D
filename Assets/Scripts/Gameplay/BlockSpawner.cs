@@ -38,7 +38,6 @@ public class BlockSpawner : MonoBehaviour
         _groundCheck.Initialize();
         CameraCtrl.I.Initialize();
         ClearBlocksImmediate();
-        SpawnNextBlock();
     }
 
     public void SpawnNextBlock()

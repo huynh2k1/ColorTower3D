@@ -19848,7 +19848,7 @@ MonoBehaviour:
   - {fileID: 7622183503551533328}
   - {fileID: 1939807483363981051}
   - {fileID: 5486935546033386250}
-  patrolSpeed: 5
+  patrolSpeed: 5.5
 --- !u!1 &5486935546033386250
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class GameCtrl : GameManagerBase
     private void OnEnable()
     {
         //UIHome
-        HomePanel.OnClickPlayButton += PlayGame;
+        HomePanel.OnClickPlayButton += SelectLevel;
 
         //UIGame
         GamePanel.OnClickHomeButton += HomeScene;
@@ -31,11 +31,13 @@ public class GameCtrl : GameManagerBase
         //UILose
         PanelLose.OnClickReplayButton += ReplayGame;
         PanelLose.OnClickHomeButton += HomeScene;
+
+        UISelectMap.OnTapToPlayClicked += PlayGame;
     }
 
     private void OnDestroy()
     {
-        HomePanel.OnClickPlayButton -= PlayGame;
+        HomePanel.OnClickPlayButton -= SelectLevel;
         //UIGame
         GamePanel.OnClickHomeButton -= HomeScene;
         GamePanel.OnClickReplayButton -= ReplayGame;
@@ -44,6 +46,7 @@ public class GameCtrl : GameManagerBase
         PanelLose.OnClickReplayButton -= ReplayGame;
         PanelLose.OnClickHomeButton -= HomeScene;
 
+        UISelectMap.OnTapToPlayClicked -= PlayGame;
     }
 
     public void ChangeState(GameStatus newState)
@@ -56,22 +59,31 @@ public class GameCtrl : GameManagerBase
         ChangeState(GameStatus.None);
         uiCtrl.Active(PanelType.Home);
         uiCtrl.DeActive(PanelType.Game);
+        uiCtrl.ShowUISelectMap(false);
+    }
+
+    public void SelectLevel()
+    {
+        ChangeState(GameStatus.None);
+        uiCtrl.DeActive(PanelType.Home);
+        uiCtrl.Active(PanelType.Game);
+        uiCtrl.ShowUISelectMap(true);
+        ScoreCtrl.I.Inititalize();
+        BlockSpawner.I.Initialize();
     }
 
     public override void PlayGame()
     {
         ChangeState(GameStatus.Playing);
-        uiCtrl.DeActive(PanelType.Home);
-        uiCtrl.Active(PanelType.Game);
-        ScoreCtrl.I.Inititalize();
-        BlockSpawner.I.Initialize();
+        BlockSpawner.I.SpawnNextBlock();
     }
 
     public override void ReplayGame()
     {
-        ChangeState(GameStatus.Playing);
-        BlockSpawner.I.Initialize();
+        ChangeState(GameStatus.None);
+        uiCtrl.ShowUISelectMap(true);
         ScoreCtrl.I.Inititalize();
+        BlockSpawner.I.Initialize();
     }
 
     public override void Defeat()

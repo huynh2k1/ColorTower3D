@@ -18,7 +18,8 @@ namespace BaseH
         Pause,
         Setting,
         HowToPlay,
-        Loading
+        Loading,
+        SelectMap
     }
 
 }
