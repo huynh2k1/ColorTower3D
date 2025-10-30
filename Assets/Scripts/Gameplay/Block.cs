@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Threading;
-using Unity.Android.Gradle;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
