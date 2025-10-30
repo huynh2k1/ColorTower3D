@@ -1,0 +1,12 @@
+# ninja log v5
+185	657	7834055807693492	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6e20e12d10087e16
+658	1031	7834055810297020	D:/MyProjects/_OS/ColorTower/ColorTower3D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3tf4a4h1/obj/arm64-v8a/libswappywrapper.so	dcd2e614483d3359
+91	2406	7834055824710642	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	5a818941e89aaa31
+83	2448	7834055825001147	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	70b90f48b6bc746f
+106	2463	7834055825461025	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	6a69072a74b50f79
+171	2465	7834055825565858	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	ea45f7bb39aa7142
+155	2636	7834055826834997	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	48f5dfeac1725e12
+70	2698	7834055827944141	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	1b30e16608d36e46
+141	3248	7834055833143982	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	51c359efe43eb855
+1	3469	7834055835538659	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	bf14c66a133ca2e8
+3469	4027	7834055841451482	D:/MyProjects/_OS/ColorTower/ColorTower3D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3tf4a4h1/obj/arm64-v8a/libgame.so	fa3238dd3c9a2279

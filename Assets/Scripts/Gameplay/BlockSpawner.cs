@@ -44,14 +44,12 @@ public class BlockSpawner : MonoBehaviour
     public void SpawnNextBlock()
     {
         float posY = (_indexSpawn * _blockSize) + (_blockSize * 3f);
-        float start = UnityEngine.Random.value > 0.5f ? -2 : 2;
-        Vector3 pos = new Vector3(start, posY, 0);
 
-        Block block = Instantiate(_blockPrefab, pos, Quaternion.identity);
-        block.patrolSpeed = 1 + (idBlock / 10);
+        Block block = Instantiate(_blockPrefab);
+        //block.patrolSpeed = 1 + (idBlock / 10);
         block.ID = idBlock;
         block.OnBlockPlaced = OnBlockLanded;
-        block.Initialize();
+        block.Initialize(posY);
         _listBlocks.Add(block);
         _indexSpawn++;
         idBlock++;
@@ -65,8 +63,8 @@ public class BlockSpawner : MonoBehaviour
             SoundControl.I.PlaySoundByType(SoundType.MERGE10);
 
             _indexSpawn = 0;
-            ClearBlocks();
-            CameraCtrl.I.MoveCamera(_indexSpawn, _blockSize, SpawnNextBlock);
+            ClearBlocks(SpawnNextBlock);
+            CameraCtrl.I.MoveCamera(_indexSpawn, _blockSize);
             return;
         }
         CameraCtrl.I.MoveCamera(_indexSpawn, _blockSize, SpawnNextBlock);
@@ -82,12 +80,12 @@ public class BlockSpawner : MonoBehaviour
 
     }
 
-    public void ClearBlocks()
+    public void ClearBlocks(Action actionDone = null)
     {
-        StartCoroutine(ClearBlocksRoutine());
+        StartCoroutine(ClearBlocksRoutine(actionDone));
     }
 
-    private IEnumerator ClearBlocksRoutine()
+    private IEnumerator ClearBlocksRoutine(Action actionDone = null)
     {
         int count = _listBlocks.Count;
         if (count == 0)
@@ -105,6 +103,7 @@ public class BlockSpawner : MonoBehaviour
         }
 
         _listBlocks.Clear();
+        actionDone?.Invoke();
     }
 
     public void OnBlockGrounded()

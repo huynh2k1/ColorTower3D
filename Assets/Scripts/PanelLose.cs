@@ -22,8 +22,9 @@ public class PanelLose : Panel
         _btnReplay?.onClick.AddListener(ReplayClick);
     }
 
-    private void OnEnable()
+    public override void Show()
     {
+        base.Show();
         UpdateTextScore();
         UpdateTextBestScore();
     }

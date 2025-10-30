@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using Unity.Android.Gradle;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,8 +10,8 @@ public class Block : MonoBehaviour
     public int ID;
     [SerializeField] ParticleSystem _effect;
     [SerializeField] Rigidbody rb;
-    [SerializeField] float _maxGravity = -35f;
-    [SerializeField] float gravityScale = 5f;
+    const float _maxGravity = -25f;
+    const float _gravityScale = 3f;
     [SerializeField] GameObject[] listModel;
 
     private bool hasStartedFall = false;
@@ -19,22 +20,43 @@ public class Block : MonoBehaviour
     public Action OnBlockPlaced;
 
     [Header("Patrol")]
-    public float patrolSpeed = 1f; //
-    [SerializeField] float patrolRange = 4f;
+    public float patrolSpeed = 6f; //
+    public const float leftX = -3f;
+    public const float rightX = 3f;
+
     private bool isPatrolling = false;
+    Vector3 targetPos;
 
-    private float timer;
-
-    public void Initialize()
+    public void Initialize(float posY)
     {
         hasStartedFall = false;
         hasLanded = false;
         rb.isKinematic = true;
 
-        // Spawn ngẫu nhiên tại -2 hoặc 2
-        isPatrolling = true;
-        timer = transform.position.x == -4 ? 0 : patrolRange; // Đảm bảo hướng đi đúng ngay từ đầu
+        InitRandomModel();
+        InitPatrol(posY);
+    }
 
+    public void InitPatrol(float posY)
+    {
+        //float randomX = UnityEngine.Random.Range(leftX, rightX);
+        float randomX = (UnityEngine.Random.value >= 0.5f) ? rightX : leftX;
+        transform.position = new Vector3(randomX, posY, transform.position.z);
+
+        if (UnityEngine.Random.value >= 0.5f)
+        {
+            targetPos = new Vector3(leftX, transform.position.y, transform.position.z);
+        }
+        else
+        {
+            targetPos = new Vector3(rightX, transform.position.y, transform.position.z);
+        }
+
+        isPatrolling = true;
+    }
+
+    void InitRandomModel()
+    {
         int index = UnityEngine.Random.Range(0, listModel.Length);
         listModel[index].SetActive(true);
     }
@@ -57,16 +79,23 @@ public class Block : MonoBehaviour
         isPatrolling = false; // ❗ STOP PATROL
         rb.isKinematic = false;
 
-        Physics.gravity = new Vector3(0, -9.81f * gravityScale, 0);
+        Physics.gravity = new Vector3(0, -9.81f * _gravityScale, 0);
     }
 
     private void Update()
     {
-        if (isPatrolling)
+        if (isPatrolling == false)
+            return;
+        // Di chuyển tới target
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, patrolSpeed * Time.deltaTime);
+
+        // Nếu đến biên thì đổi hướng
+        if (Mathf.Abs(transform.position.x - targetPos.x) < 0.05f)
         {
-            timer += Time.deltaTime * patrolSpeed;
-            float x = Mathf.Lerp(-4f, 4f, Mathf.PingPong(timer, 1f));
-            transform.position = new Vector3(x, transform.position.y, transform.position.z);
+            if (targetPos.x == leftX)
+                targetPos = new Vector3(rightX, transform.position.y, transform.position.z);
+            else
+                targetPos = new Vector3(leftX, transform.position.y, transform.position.z);
         }
     }
 
@@ -108,6 +137,7 @@ public class Block : MonoBehaviour
 
     public void Destroy()
     {
+        OnBlockPlaced = null;
         Destroy(gameObject);
     }
 }
